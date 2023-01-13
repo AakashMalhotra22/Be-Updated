@@ -23,7 +23,7 @@ export default class News extends Component {
     super();
     this.state={
       article: [],
-      loading: true,
+      loading: false,
       page: 1,
       totalArticles: 0
     }
@@ -38,7 +38,7 @@ export default class News extends Component {
     this.setState({
       article: parsedata.articles,
       totalArticles: parsedata.totalResults,
-      loading:false
+      loading:false,
     });
 
   }
