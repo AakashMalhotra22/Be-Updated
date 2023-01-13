@@ -1,8 +1,22 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem';
 import Spinner from './spinner';
+import propTypes from 'prop-types'
+
 
 export default class News extends Component {
+  static defaultProps={
+    country: 'in',
+    pageSize: 9,
+    category: 'general',
+    apiKey: 'df36de1cc1124b98a6b9c7bb698d98e7'
+  }
+
+  static propTypes = {
+      country: propTypes.string,
+      pageSize: propTypes.number,
+      category: propTypes.string
+  }
 
   constructor()
   {
@@ -17,7 +31,7 @@ export default class News extends Component {
 
   async componentDidMount()
   {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=df36de1cc1124b98a6b9c7bb698d98e7&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}`;
     this.setState({loading:true});
     let data = await fetch(url);
     let parsedata = await data.json();
@@ -30,7 +44,7 @@ export default class News extends Component {
   }
   
   handlePrev= async()=>{
-      let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=df36de1cc1124b98a6b9c7bb698d98e7&page=${this.state.page-1}&pageSize=${this.props.pageSize}`;
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page-1}&pageSize=${this.props.pageSize}`;
       this.setState({loading:true});
       let data = await fetch(url);
       let parsedata = await data.json();
@@ -42,7 +56,7 @@ export default class News extends Component {
   }
 
   handleNext= async()=>{
-      let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=df36de1cc1124b98a6b9c7bb698d98e7&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
+      let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
       this.setState({loading:true});
       let data = await fetch(url);
       let parsedata = await data.json();
@@ -77,10 +91,10 @@ export default class News extends Component {
             })
             }
           </div>
-          {this.state.loading && <div className="container d-flex justify-content-between">
+          <div className="container d-flex justify-content-between">
           <button type="button" disabled={this.state.page<=1} onClick={this.handlePrev}className="btn btn-dark">&larr; previous</button>
           <button type="button" disabled={this.state.page+1>Math.ceil(this.state.totalArticles/this.props.pageSize)}onClick={this.handleNext}className="btn btn-dark">next &rarr;</button>
-          </div>}
+          </div>
 
         </div>
       </div>
