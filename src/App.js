@@ -15,6 +15,7 @@ export default class App extends Component {
     return (
       <div>
         <Router>
+
         <Navbar />
         <Routes>
         <Route path="/" element={<News key ="general" country={'in'} pageSize={12} category={'general'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
@@ -24,9 +25,8 @@ export default class App extends Component {
         <Route path="/science" element={<News key ="science" country={'in'} pageSize={12} category={'science'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
         <Route path="/sports" element={<News key ="sports" country={'in'} pageSize={12} category={'sports'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
         <Route path="/technology" element={<News key ="technology" country={'in'} pageSize={12} category={'technology'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
-
-  
         </Routes> 
+
         </Router>
       </div>
     )
