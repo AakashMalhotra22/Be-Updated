@@ -13,6 +13,7 @@
 
 # misc
 .hidder.txt
+.hide2.txt
 .DS_Store
 .env.local
 .env.development.local
