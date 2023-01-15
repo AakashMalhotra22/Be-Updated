@@ -7,24 +7,39 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar';
 
 export default class App extends Component {
   
+  state={
+    progress:0 
+  }
+  setProgress =(progress)=>
+  {
+    this.setState({
+        progress: progress
+      }
+    )
+  }
   render() 
   {
     return (
       <div>
         <Router>
-
         <Navbar />
+        <LoadingBar
+        color='#f11946'
+        height={2}
+        progress={this.state.progress}
+        />
         <Routes>
-        <Route path="/" element={<News key ="general" country={'in'} pageSize={12} category={'general'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
-        <Route path="/business" element={<News key ="business" country={'in'} pageSize={12} category={'business'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
-        <Route path="/entertainment" element={<News key ="entertainment" country={'in'} pageSize={12} category={'entertainment'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
-        <Route path="/health" element={<News key ="health" country={'in'} pageSize={12} category={'health'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
-        <Route path="/science" element={<News key ="science" country={'in'} pageSize={12} category={'science'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
-        <Route path="/sports" element={<News key ="sports" country={'in'} pageSize={12} category={'sports'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
-        <Route path="/technology" element={<News key ="technology" country={'in'} pageSize={12} category={'technology'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
+        <Route path="/" element={<News setProgress = {this.setProgress} key ="general" country={'in'} pageSize={12} category={'general'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
+        <Route path="/business" element={<News setProgress = {this.setProgress} key ="business" country={'in'} pageSize={12} category={'business'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
+        <Route path="/entertainment" element={<News setProgress = {this.setProgress} key ="entertainment" country={'in'} pageSize={12} category={'entertainment'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
+        <Route path="/health" element={<News setProgress = {this.setProgress} key ="health" country={'in'} pageSize={12} category={'health'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
+        <Route path="/science" element={<News setProgress = {this.setProgress} key ="science" country={'in'} pageSize={12} category={'science'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
+        <Route path="/sports" element={<News setProgress = {this.setProgress} key ="sports" country={'in'} pageSize={12} category={'sports'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
+        <Route path="/technology" element={<News setProgress = {this.setProgress} key ="technology" country={'in'} pageSize={12} category={'technology'} apiKey={'df36de1cc1124b98a6b9c7bb698d98e7'}/>}/>
         </Routes> 
 
         </Router>
